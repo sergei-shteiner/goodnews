@@ -1,47 +1,45 @@
 NEWS_PROMPT = """
-Привет!
+Hallo!
 
-Я заметил, что в новостях все почему-то обычно умирают. А я хочу, чтобы рождались.
+Ich habe bemerkt, dass in den Nachrichten irgendwie immer alle sterben. Aber ich möchte, dass Menschen geboren werden.
 
-Поэтому завести канал в интернете, куда буду каждый день постить по одной новости на немецком языке о том, что кто-то родился.
+Deshalb möchte ich eine Website erstellen, auf der bei jedem Laden eine gute Nachricht auf Deutsch erscheint, dass jemand geboren wurde.
 
-Пусть в будущем он или она будут чем-то знамениты. В общем, нужно придумать этих людей и чем они прославятся. Чем-то хорошим!
+In der Zukunft werden sie berühmt sein. Wir müssen uns diese Menschen und womit sie berühmt werden, ausdenken. Etwas Gutes!
 
-Несколько подробностей об их будущей карьере, может быть про какие-то их достижения и премии.
+Einige Details über ihre zukünftige Karriere, vielleicht über ihre Leistungen und Auszeichnungen.
 
-Что нужно указать в новости: имя, фамилия, город рождения. Или деревня. Это может быть какое-то совсем маленькое местечко.
+Was in der Nachricht angegeben werden muss: Vorname, Nachname, Geburtsort. Oder ein Dorf. Es kann ein sehr kleiner Ort sein.
 
-Главное, что в Германии!
+Hauptsache, es ist in Deutschland!
 
-Постарайся не использовать совсем уж стереотипные имена.
+Gib in der Nachricht die genaue Zeit an! Genauer gesagt, heute {date} um {time}. Es sollte einfach die aktuelle Zeit sein, wenn du die Nachricht schreibst. Nur nach lokaler Zeit.
 
-Укажи в новости точное время! А именно, сегодня {date} в {time}. Это должно быть просто текущее время, когда ты пишешь новость. Только по-местному времени.
+Versuche, eine solche Nachricht zu schreiben! Ich erinnere daran: auf Deutsch! Vielen Dank im Voraus!
 
-Попробуй написать такую новость! Напоминаю: на немецком языке! Спасибо заранее!
+In der Antwort nur der Text der Nachricht auf Deutsch!
 
-В ответе только текст новости на немецком!
-
-Не нужно заголовков и разметки! Просто текст новости. На немецком!
+Keine Überschriften oder Formatierung! Einfach der Text der Nachricht. Auf Deutsch!
 """
 
 LOCATION_PROMPT = """
-В нижеприведённом тексте указан населённый пункт.
+In dem folgenden Text wird ein Ort genannt.
 
-Вот текст:
+Hier ist der Text:
 
 {text}
 
-Напиши название населённого пункта по-немецки. В ответе должно быть только название населённого пункта по-немецки, больше ничего.
+Schreibe den Ortsnamen auf Deutsch. Die Antwort sollte nur der Ortsname auf Deutsch sein, nichts weiter.
 """
 
 WEATHER_PROMPT = """
-В нижеприведённом тексте указана погода в {location}.
+In dem folgenden Text wird das Wetter in {location} angegeben.
 
-Вот погода:
+Hier ist das Wetter:
 
 {weather}
 
-Перепиши в формате "в {location} сейчас ...". И дальше кратко опиши погоду, которая указана выше. По-немецки!
+Schreibe es im Format "In {location} ist es gerade ...". Beschreibe dann kurz das oben angegebene Wetter auf Deutsch! Es müssen nicht genau diese Worte sein, solange es ein korrekter zusammenhängender Text ist.
 
-В ответе только погода на немецком в указанном формате!
+In der Antwort nur das Wetter auf Deutsch im angegebenen Format!
 """

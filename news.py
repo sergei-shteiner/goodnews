@@ -23,7 +23,7 @@ def generate_news():
     completion = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": "Du bist ein Journalist, der Deutsch fließend beherrscht."},
             {
                 "role": "user",
                 "content": NEWS_PROMPT.format(time=current_time, date=current_date),
@@ -63,3 +63,6 @@ def generate_news():
 
     message = f"{news}\n\n{weather_report}"
     return message
+
+if __name__ == "__main__":
+    print(generate_news())
