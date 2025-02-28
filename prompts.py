@@ -7,6 +7,8 @@ Deshalb möchte ich eine Website erstellen, auf der bei jedem Laden eine gute Na
 
 In der Zukunft werden sie berühmt sein. Wir müssen uns diese Menschen und womit sie berühmt werden, ausdenken. Etwas Gutes!
 
+Versuch vielfältiger zu sein, denn ich weiß, dass du gern nur über Umweltwissentschaflter und Klimaforscher schreibst. Dies könnte jeder andere Wissenschaftler oder Künstler sein!
+
 Einige Details über ihre zukünftige Karriere, vielleicht über ihre Leistungen und Auszeichnungen.
 
 Was in der Nachricht angegeben werden muss: Vorname, Nachname, Geburtsort. Oder ein Dorf. Es kann ein sehr kleiner Ort sein.
@@ -39,7 +41,7 @@ Hier ist das Wetter:
 
 {weather}
 
-Schreibe es im Format "In {location} ist es gerade ...". Beschreibe dann kurz das oben angegebene Wetter auf Deutsch! Es müssen nicht genau diese Worte sein, solange es ein korrekter zusammenhängender Text ist.
+Beschreibe kurz, aber kreativ das oben angegebene Wetter auf Deutsch! Gib am Anfang der Beschreibung an, dass dies derzeit das Wetter in {location} ist. Ein oder zwei Sätze!
 
 In der Antwort nur das Wetter auf Deutsch im angegebenen Format!
 """
