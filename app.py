@@ -1,5 +1,6 @@
 from flask import Flask, render_template_string
 from news import generate_news
+from telegram_publisher import publish_news
 
 app = Flask(__name__)
 
@@ -70,6 +71,10 @@ TEMPLATE = """
 def home():
     # Generiert eine neue Nachricht
     news_text = generate_news()
+    try:
+        publish_news(news_text)
+    except Exception as error:
+        app.logger.warning("Failed to publish news to Telegram: %s", error)
     return render_template_string(TEMPLATE, news=news_text)
 
 if __name__ == '__main__':

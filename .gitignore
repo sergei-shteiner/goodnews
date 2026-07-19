@@ -1,0 +1,6 @@
+.env
+TELEGRAM_BOT_TOKEN
+__pycache__/
+*.py[cod]
+venv/
+.venv/

@@ -12,11 +12,6 @@ _ = load_dotenv(find_dotenv())
 api_key = os.getenv("OPEN_AI_API_KEY")
 client = OpenAI(api_key=api_key)
 
-model="gpt-4o-mini"
-tempreture=0.8
-max_tokens=100
-topic=""
-
 def generate_news():
     current_date = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%d.%m.%Y")
     current_time = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%H:%M")
