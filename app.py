@@ -71,6 +71,11 @@ TEMPLATE = """
 def home():
     # Generiert eine neue Nachricht
     news_text = generate_news()
+    return render_template_string(TEMPLATE, news=news_text)
+
+@app.route('/publish')
+def publish():
+    news_text = generate_news()
     try:
         publish_news(news_text)
     except Exception as error:

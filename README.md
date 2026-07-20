@@ -16,7 +16,10 @@ TELEGRAM_CHANNEL_ID=...
 
 ## Telegram channel publishing
 
-To publish every generated website news item to Telegram:
+The `/` route only renders a generated news item. The `/publish` route generates
+a news item, publishes it to Telegram, and renders it.
+
+To publish generated news items to Telegram:
 
 1. Create a Telegram channel.
 2. Create a bot via `@BotFather` and copy its token to `TELEGRAM_BOT_TOKEN`.
