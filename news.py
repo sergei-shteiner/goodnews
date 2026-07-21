@@ -21,6 +21,7 @@ def generate_news():
     current_time = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%H:%M")
     place = choose_place()
     place_phrase = make_place_phrase(place)
+    weather_place = place["name"]
     activity_field = choose_activity_field()
     person = choose_person()
 
@@ -53,7 +54,7 @@ def generate_news():
             {"role": "system", "content": "You are a helpful assistant."},
             {
                 "role": "user",
-                "content": WEATHER_PROMPT.format(location=place_phrase, weather=weather),
+                "content": WEATHER_PROMPT.format(location=weather_place, weather=weather),
             }
         ]
     )

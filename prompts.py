@@ -53,5 +53,7 @@ Hier ist das Wetter:
 
 Beschreibe kurz, aber kreativ das oben angegebene Wetter auf Deutsch! Gib am Anfang der Beschreibung an, dass dies derzeit das Wetter in {location} ist. Ein oder zwei Sätze!
 
+Nenne dabei nur den Ortsnamen {location}, ohne Bundesland oder regionale Ergänzung.
+
 In der Antwort nur das Wetter auf Deutsch im angegebenen Format!
 """
