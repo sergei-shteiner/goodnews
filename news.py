@@ -3,7 +3,7 @@ import os
 from openai import OpenAI
 from datetime import datetime
 import pytz
-from diversity import choose_activity_field, choose_person, choose_place, make_place_phrase
+from diversity import choose_activity_field, choose_person, choose_place, get_place_context
 from weather import get_weather_by_coordinates
 
 from prompts import NEWS_PROMPT, WEATHER_PROMPT
@@ -20,7 +20,7 @@ def generate_news():
     current_date = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%d.%m.%Y")
     current_time = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%H:%M")
     place = choose_place()
-    place_phrase = make_place_phrase(place)
+    place_context = get_place_context(place)
     weather_place = place["name"]
     activity_field = choose_activity_field()
     person = choose_person()
@@ -34,11 +34,11 @@ def generate_news():
                 "content": NEWS_PROMPT.format(
                     time=current_time,
                     date=current_date,
-                    place=place_phrase,
                     activity_field=activity_field,
                     first_name=person["first_name"],
                     last_name=person["last_name"],
                     gender=person["gender_de"],
+                    **place_context,
                 ),
             }
         ]

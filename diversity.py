@@ -107,5 +107,34 @@ def choose_person():
     }
 
 
-def make_place_phrase(place):
-    return f"{place['name']} in {place['state']}"
+def _place_type(place):
+    population = place["population"]
+    feature_code = place["feature_code"]
+
+    if feature_code == "PPLC" or population >= 500_000:
+        return "Großstadt"
+    if feature_code in {"PPLA", "PPLA2", "PPLA3"} or population >= 100_000:
+        return "Stadt oder Verwaltungssitz"
+    if population >= 20_000:
+        return "Stadt"
+    if population >= 5_000:
+        return "Kleinstadt oder größere Gemeinde"
+    if population >= 1_000 or feature_code == "PPLA4":
+        return "Gemeinde oder kleiner Ort"
+    return "kleines Dorf oder kleine Ortschaft"
+
+
+def _population_note(place):
+    population = place["population"]
+    if population <= 0:
+        return "keine zuverlässige Einwohnerzahl in der Quelle"
+    return f"ungefähr {population:,}".replace(",", ".")
+
+
+def get_place_context(place):
+    return {
+        "place_name": place["name"],
+        "place_state": place["state"],
+        "place_type": _place_type(place),
+        "place_population": _population_note(place),
+    }

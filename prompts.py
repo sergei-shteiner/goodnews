@@ -19,7 +19,13 @@ Das Kind muss genau diesen Namen haben: {first_name} {last_name}.
 
 Das Kind ist {gender}. Verwende dazu passende Pronomen und Formulierungen.
 
-Der Geburtsort muss genau dieser Ort sein: {place}.
+Der Geburtsort muss aus diesen Ortsdaten entstehen:
+- Ortsname: {place_name}
+- Bundesland: {place_state}
+- Ortstyp: {place_type}
+- Einwohnerzahl: {place_population}
+
+Formuliere den Geburtsort natürlich und abwechslungsreich. Verwende nicht immer die feste Formel „{place_name} in {place_state}“. Das Bundesland darf zum Beispiel in Klammern stehen, als regionale Einordnung später im Satz erscheinen oder durch eine passende adjektivische Form ersetzt werden. Nutze den Ortstyp, wenn er der Nachricht mehr Farbe gibt, zum Beispiel als kleines Dorf, Gemeinde, Kleinstadt oder Stadt. Wenn die Einwohnerzahl in der Quelle nicht zuverlässig ist, erwähne keine genaue Zahl.
 
 Die spätere Bekanntheit soll in diesem Bereich liegen: {activity_field}.
 
