@@ -15,6 +15,16 @@ Was in der Nachricht angegeben werden muss: Vorname, Nachname, Geburtsort. Oder 
 
 Hauptsache, es ist in Deutschland!
 
+Das Kind muss genau diesen Namen haben: {first_name} {last_name}.
+
+Das Kind ist {gender}. Verwende dazu passende Pronomen und Formulierungen.
+
+Der Geburtsort muss genau dieser Ort sein: {place}.
+
+Die spätere Bekanntheit soll in diesem Bereich liegen: {activity_field}.
+
+Verwende Namen, Ort und Bereich natürlich, als wären sie Teil einer echten Meldung. Erfinde Zukunftsleistung und Auszeichnungen passend dazu. Vermeide dabei wiedererkennbare Schablonen, besonders wiederholte Berufe, wiederholte Preislisten und zu ähnliche Satzanfänge.
+
 Gib in der Nachricht die genaue Zeit an! Genauer gesagt, heute {date} um {time}. Es sollte einfach die aktuelle Zeit sein, wenn du die Nachricht schreibst. Nur nach lokaler Zeit.
 
 Versuche, eine solche Nachricht zu schreiben! Ich erinnere daran: auf Deutsch! Vielen Dank im Voraus!

@@ -30,3 +30,31 @@ To publish generated news items to Telegram:
 
 If Telegram is not configured or posting fails, the website still renders the
 generated news and logs a warning.
+
+## Diversity data
+
+German place names are generated from the GeoNames Germany dump. To rebuild the
+local JSON after downloading and unpacking `DE.zip`:
+
+```bash
+python scripts/build_german_places.py /path/to/DE.txt data/german_places.json
+```
+
+First names are generated from `firstname-database`, with weights enriched from
+Onomaverse where names overlap. Surnames are generated from `gecko-data`, with
+additional German entries from Onomaverse. To
+rebuild the local JSON files after downloading those CSV files:
+
+```bash
+python scripts/build_names.py \
+  /path/to/firstnames.csv \
+  /path/to/onomaverse-given-name-frequency.csv \
+  /path/to/gecko-last-name.csv \
+  /path/to/onomaverse-surname-frequency.csv \
+  data
+```
+
+The runtime samples gender 50:50 first, then samples a first name from the
+selected gender bucket and a surname from the surname corpus.
+
+Activity fields are maintained in `data/activity_fields.json`.

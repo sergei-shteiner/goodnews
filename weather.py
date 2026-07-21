@@ -55,3 +55,6 @@ def get_weather(location_name):
     city_name = f"{location_name},Deutschland"
     lat, lon = get_coordinates(city_name, api_key)
     return get_weather_by_location(lat, lon, api_key)
+
+def get_weather_by_coordinates(lat, lon):
+    return get_weather_by_location(lat, lon, api_key)
