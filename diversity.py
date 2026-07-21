@@ -10,6 +10,16 @@ FIELDS_PATH = DATA_DIR / "activity_fields.json"
 FIRST_NAMES_PATH = DATA_DIR / "german_first_names.json"
 SURNAMES_PATH = DATA_DIR / "german_surnames.json"
 
+DEFAULT_POPULATION_BY_FEATURE_CODE = {
+    "PPLC": 500_000,
+    "PPLA": 75_000,
+    "PPLA2": 35_000,
+    "PPLA3": 20_000,
+    "PPLA4": 5_000,
+    "PPL": 500,
+    "PPLX": 250,
+}
+
 
 @lru_cache(maxsize=1)
 def load_places():
@@ -32,57 +42,13 @@ def load_surnames():
 
 
 @lru_cache(maxsize=1)
-def load_place_buckets():
-    buckets = {
-        "village": [],
-        "town": [],
-        "city": [],
-    }
-
-    for place in load_places():
-        population = place["population"]
-        feature_code = place["feature_code"]
-
-        if population >= 50_000 or feature_code in {"PPLC", "PPLA", "PPLA2", "PPLA3"}:
-            buckets["city"].append(place)
-        elif population >= 1_000 or feature_code == "PPLA4":
-            buckets["town"].append(place)
-        else:
-            buckets["village"].append(place)
-
-    return buckets
-
-
-def _place_weight(place):
-    population = place["population"]
-    base_weight = place.get("weight", 1)
-
-    if population == 0:
-        population_weight = 4
-    elif population < 500:
-        population_weight = 5
-    elif population < 5_000:
-        population_weight = 4
-    elif population < 50_000:
-        population_weight = 3
-    elif population < 250_000:
-        population_weight = 2
-    else:
-        population_weight = 1
-
-    return base_weight * population_weight
+def load_place_weights():
+    return [_estimated_population(place) for place in load_places()]
 
 
 def choose_place():
-    buckets = load_place_buckets()
-    bucket_name = random.choices(
-        ["village", "town", "city"],
-        weights=[55, 35, 10],
-        k=1,
-    )[0]
-    places = buckets[bucket_name]
-    weights = [_place_weight(place) for place in places]
-    return random.choices(places, weights=weights, k=1)[0]
+    places = load_places()
+    return random.choices(places, weights=load_place_weights(), k=1)[0]
 
 
 def choose_activity_field():
@@ -105,6 +71,12 @@ def choose_person():
         "first_name": first_name["name"],
         "last_name": surname["name"],
     }
+
+
+def _estimated_population(place):
+    if place["population"] > 0:
+        return place["population"]
+    return DEFAULT_POPULATION_BY_FEATURE_CODE.get(place["feature_code"], 500)
 
 
 def _place_type(place):
