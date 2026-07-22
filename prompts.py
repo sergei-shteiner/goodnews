@@ -57,7 +57,9 @@ Hier ist das Wetter:
 
 {weather}
 
-Beschreibe kurz, aber kreativ das oben angegebene Wetter auf Deutsch! Gib am Anfang der Beschreibung an, dass dies derzeit das Wetter in {location} ist. Ein oder zwei Sätze!
+Beschreibe kurz, aber kreativ das oben angegebene Wetter auf Deutsch! Ein oder zwei Sätze.
+
+Nenne {location}, aber verwende nicht jedes Mal dieselbe Einstiegsformel. Besonders die feste Formulierung „Derzeit ist das Wetter in {location}“ soll vermieden werden. Beginne natürlich und abwechslungsreich, zum Beispiel mit „In {location} ...“, „Über {location} ...“, „Für {location} ...“ oder einer anderen passenden journalistischen Formulierung.
 
 Nenne dabei nur den Ortsnamen {location}, ohne Bundesland oder regionale Ergänzung.
 
