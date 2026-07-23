@@ -9,6 +9,7 @@ import requests
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
+from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
@@ -17,6 +18,8 @@ import reportlab
 
 DEFAULT_BASE_URL = "https://gute-nachrichten.info"
 DEFAULT_OUTPUT_DIR = Path("output/pdf")
+SIGNATURE_PATH = Path(__file__).resolve().parent / "assets" / "signature.png"
+SIGNATURE_WIDTH = 48 * mm
 
 
 def _layout_sizes(news):
@@ -87,6 +90,26 @@ def safe_filename(value):
     return value or "goodnews"
 
 
+def draw_signature(canvas, _doc):
+    if not SIGNATURE_PATH.exists():
+        return
+
+    image = ImageReader(str(SIGNATURE_PATH))
+    image_width, image_height = image.getSize()
+    signature_height = SIGNATURE_WIDTH * image_height / image_width
+    page_width, _page_height = A4
+    x = page_width - 16 * mm - SIGNATURE_WIDTH
+    y = 8 * mm
+    canvas.drawImage(
+        image,
+        x,
+        y,
+        width=SIGNATURE_WIDTH,
+        height=signature_height,
+        mask="auto",
+    )
+
+
 def build_pdf(news, output_path):
     fonts = register_fonts()
     sizes = _layout_sizes(news)
@@ -98,7 +121,7 @@ def build_pdf(news, output_path):
         rightMargin=16 * mm,
         leftMargin=16 * mm,
         topMargin=20 * mm,
-        bottomMargin=20 * mm,
+        bottomMargin=24 * mm,
     )
     title_style = ParagraphStyle(
         "Title",
@@ -131,7 +154,7 @@ def build_pdf(news, output_path):
             story.append(Spacer(1, 6 * mm))
             story.append(Paragraph(escape(paragraph), body_style))
 
-    doc.build(story)
+    doc.build(story, onFirstPage=draw_signature, onLaterPages=draw_signature)
 
 
 def fetch_jobs(base_url, timeout):
