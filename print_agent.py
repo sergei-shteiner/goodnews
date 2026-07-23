@@ -22,12 +22,43 @@ DEFAULT_OUTPUT_DIR = Path("output/pdf")
 def _layout_sizes(news):
     text_length = len(news)
     if text_length <= 850:
-        return {"title": 36, "title_leading": 43, "body": 24, "body_leading": 33}
+        return {"title": 28, "title_leading": 34, "body": 18, "body_leading": 25}
     if text_length <= 1200:
-        return {"title": 34, "title_leading": 40, "body": 22, "body_leading": 30}
+        return {"title": 26, "title_leading": 32, "body": 17, "body_leading": 24}
     if text_length <= 1600:
-        return {"title": 31, "title_leading": 37, "body": 20, "body_leading": 27}
-    return {"title": 28, "title_leading": 34, "body": 18, "body_leading": 25}
+        return {"title": 24, "title_leading": 30, "body": 16, "body_leading": 23}
+    return {"title": 22, "title_leading": 28, "body": 15, "body_leading": 22}
+
+
+def _split_weather_fallback(paragraph):
+    weather_start = None
+    weather_pattern = re.compile(
+        r" (?=(?:In|Über|Für|Bei) [A-ZÄÖÜ][^.!?]{0,90}"
+        r"\b(?:liegt|ziehen|herrscht|zeigt|weht|breitet|hängt|scheint|sorgt|wirkt|bleibt|ist)\b)"
+    )
+    for match in weather_pattern.finditer(paragraph):
+        if match.start() > len(paragraph) * 0.55:
+            weather_start = match.start() + 1
+
+    if weather_start is None:
+        return [paragraph]
+
+    return [
+        paragraph[:weather_start].strip(),
+        paragraph[weather_start:].strip(),
+    ]
+
+
+def split_news_paragraphs(news):
+    normalized = re.sub(r"\r\n?", "\n", news).strip()
+    paragraphs = [
+        re.sub(r"\s*\n\s*", " ", part).strip()
+        for part in re.split(r"\n\s*\n", normalized)
+        if part.strip()
+    ]
+    if len(paragraphs) == 1:
+        return _split_weather_fallback(paragraphs[0])
+    return paragraphs
 
 
 def _find_reportlab_font(filename):
@@ -66,15 +97,15 @@ def build_pdf(news, output_path):
         pagesize=A4,
         rightMargin=16 * mm,
         leftMargin=16 * mm,
-        topMargin=18 * mm,
-        bottomMargin=18 * mm,
+        topMargin=20 * mm,
+        bottomMargin=20 * mm,
     )
     title_style = ParagraphStyle(
         "Title",
         fontName=fonts["bold"],
         fontSize=sizes["title"],
         leading=sizes["title_leading"],
-        spaceAfter=10 * mm,
+        spaceAfter=8 * mm,
     )
     body_style = ParagraphStyle(
         "Body",
@@ -83,7 +114,7 @@ def build_pdf(news, output_path):
         leading=sizes["body_leading"],
     )
 
-    paragraphs = [part.strip() for part in news.split("\n\n") if part.strip()]
+    paragraphs = split_news_paragraphs(news)
     story = []
     if paragraphs:
         first = paragraphs[0]
@@ -97,7 +128,7 @@ def build_pdf(news, output_path):
             story.append(Paragraph(escape(first), body_style))
 
         for paragraph in paragraphs[1:]:
-            story.append(Spacer(1, 7 * mm))
+            story.append(Spacer(1, 6 * mm))
             story.append(Paragraph(escape(paragraph), body_style))
 
     doc.build(story)
