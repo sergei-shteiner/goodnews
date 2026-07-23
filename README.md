@@ -31,6 +31,21 @@ To publish generated news items to Telegram:
 If Telegram is not configured or posting fails, the website still renders the
 generated news and logs a warning.
 
+## Exhibition print queue
+
+The `/publish` route also adds the generated news item to a short-lived print
+queue. A local laptop near the printer can fetch fresh jobs and save them as
+PDFs:
+
+```bash
+python print_agent.py --once
+python print_agent.py --output-dir output/pdf
+```
+
+The agent fetches `/print/jobs`, writes one PDF per fresh job, then marks each
+job done with `/print/jobs/<id>/done`. Jobs older than 120 seconds are expired
+and skipped, so stale exhibition prints do not pile up if the laptop sleeps.
+
 ## Diversity data
 
 German place names are generated from the GeoNames Germany dump. To rebuild the

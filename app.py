@@ -1,5 +1,6 @@
-from flask import Flask, render_template_string
+from flask import Flask, jsonify, render_template_string
 from news import generate_news
+from print_queue import enqueue_print_job, get_pending_print_jobs, mark_print_job_done
 from telegram_publisher import publish_news
 
 app = Flask(__name__)
@@ -76,7 +77,19 @@ def publish():
         publish_news(news_text)
     except Exception as error:
         app.logger.warning("Failed to publish news to Telegram: %s", error)
+    try:
+        enqueue_print_job(news_text)
+    except Exception as error:
+        app.logger.warning("Failed to enqueue print job: %s", error)
     return render_template_string(TEMPLATE, news=news_text)
+
+@app.route('/print/jobs')
+def print_jobs():
+    return jsonify({"jobs": get_pending_print_jobs()})
+
+@app.route('/print/jobs/<int:job_id>/done', methods=['POST'])
+def print_job_done(job_id):
+    return jsonify({"ok": mark_print_job_done(job_id)})
 
 if __name__ == '__main__':
     # Startet den Flask-Server
