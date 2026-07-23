@@ -35,6 +35,8 @@ Verwende Namen, Ort und Bereich natürlich, als wären sie Teil einer echten Mel
 
 Gib in der Nachricht die genaue Zeit an! Genauer gesagt, heute {date} um {time}. Es sollte einfach die aktuelle Zeit sein, wenn du die Nachricht schreibst. Nur nach lokaler Zeit.
 
+Die Antwort muss exakt mit „Gute Nachricht!“ beginnen. Danach darf die Struktur variieren.
+
 Versuche, eine solche Nachricht zu schreiben! Ich erinnere daran: auf Deutsch! Vielen Dank im Voraus!
 
 In der Antwort nur der Text der Nachricht auf Deutsch!

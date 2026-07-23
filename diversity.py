@@ -22,28 +22,32 @@ DEFAULT_POPULATION_BY_FEATURE_CODE = {
 
 NEWS_STRUCTURE_HINTS = [
     (
-        "Beginne mit dem Ort und seiner Stimmung. Nenne die Geburt erst im zweiten "
-        "Satz. Vermeide die Formulierung „geboren worden“."
+        "Beginne nach „Gute Nachricht!“ mit dem Ort und seiner Stimmung. Nenne die "
+        "Geburt erst im zweiten Satz. Vermeide die Formulierung „geboren worden“."
     ),
     (
-        "Beginne mit dem Namen des Kindes. Verwende für die Geburt eine natürliche "
-        "Formulierung wie „kam zur Welt“, aber nicht „geboren worden“."
+        "Beginne nach „Gute Nachricht!“ mit dem Namen des Kindes. Verwende für die "
+        "Geburt eine natürliche Formulierung wie „kam zur Welt“, aber nicht "
+        "„geboren worden“."
     ),
     (
-        "Beginne mit der Uhrzeit als Nachrichteneinstieg. Der Satzbau soll sich "
-        "deutlich von der Standardformel „Am ... wurde ... geboren“ unterscheiden."
+        "Beginne nach „Gute Nachricht!“ mit der Uhrzeit als Nachrichteneinstieg. "
+        "Der Satzbau soll sich deutlich von der Standardformel „Am ... wurde ... "
+        "geboren“ unterscheiden."
     ),
     (
-        "Beginne mit einer kurzen Beobachtung über den Ortstyp, zum Beispiel "
-        "Dorf, Gemeinde, Kleinstadt oder Stadt. Führe den Namen des Kindes danach ein."
+        "Beginne nach „Gute Nachricht!“ mit einer kurzen Beobachtung über den "
+        "Ortstyp, zum Beispiel Dorf, Gemeinde, Kleinstadt oder Stadt. Führe den "
+        "Namen des Kindes danach ein."
     ),
     (
-        "Schreibe den ersten Absatz wie eine kurze Lokalnachricht. Nenne Ort, Zeit "
-        "und Kind, aber ohne die Passivform „geboren worden“."
+        "Schreibe nach „Gute Nachricht!“ den ersten Absatz wie eine kurze "
+        "Lokalnachricht. Nenne Ort, Zeit und Kind, aber ohne die Passivform "
+        "„geboren worden“."
     ),
     (
-        "Beginne direkt mit der Zukunftsbedeutung des Kindes und binde die Geburt "
-        "erst danach als Ausgangspunkt ein."
+        "Beginne nach „Gute Nachricht!“ direkt mit der Zukunftsbedeutung des "
+        "Kindes und binde die Geburt erst danach als Ausgangspunkt ein."
     ),
 ]
 

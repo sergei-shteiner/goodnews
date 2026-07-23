@@ -22,6 +22,13 @@ client = OpenAI(api_key=api_key)
 NEWS_MODEL = "gpt-5.5"
 WEATHER_MODEL = "gpt-5.5"
 
+def ensure_news_prefix(text):
+    text = text.strip()
+    if text.startswith("Gute Nachricht!"):
+        return text
+    return f"Gute Nachricht! {text}"
+
+
 def generate_news():
     current_date = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%d.%m.%Y")
     current_time = datetime.now(pytz.timezone('Europe/Berlin')).strftime("%H:%M")
@@ -52,7 +59,7 @@ def generate_news():
         ]
     )
 
-    news = completion.choices[0].message.content.replace("\\n", "\n")
+    news = ensure_news_prefix(completion.choices[0].message.content.replace("\\n", "\n"))
 
     weather = get_weather_by_coordinates(place["lat"], place["lon"])
 
