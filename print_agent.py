@@ -19,7 +19,7 @@ import reportlab
 DEFAULT_BASE_URL = "https://gute-nachrichten.info"
 DEFAULT_OUTPUT_DIR = Path("output/pdf")
 SIGNATURE_PATH = Path(__file__).resolve().parent / "assets" / "signature.png"
-SIGNATURE_WIDTH = 48 * mm
+SIGNATURE_WIDTH = 58 * mm
 
 
 def _layout_sizes(news):
