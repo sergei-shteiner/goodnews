@@ -3,7 +3,13 @@ import os
 from openai import OpenAI
 from datetime import datetime
 import pytz
-from diversity import choose_activity_field, choose_person, choose_place, get_place_context
+from diversity import (
+    choose_activity_field,
+    choose_news_structure_hint,
+    choose_person,
+    choose_place,
+    get_place_context,
+)
 from weather import get_weather_by_coordinates
 
 from prompts import NEWS_PROMPT, WEATHER_PROMPT
@@ -23,6 +29,7 @@ def generate_news():
     place_context = get_place_context(place)
     weather_place = place["name"]
     activity_field = choose_activity_field()
+    structure_hint = choose_news_structure_hint()
     person = choose_person()
 
     completion = client.chat.completions.create(
@@ -38,6 +45,7 @@ def generate_news():
                     first_name=person["first_name"],
                     last_name=person["last_name"],
                     gender=person["gender_de"],
+                    structure_hint=structure_hint,
                     **place_context,
                 ),
             }

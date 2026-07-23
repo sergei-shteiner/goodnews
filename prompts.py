@@ -29,7 +29,9 @@ Formuliere den Geburtsort natürlich und abwechslungsreich. Verwende nicht immer
 
 Die spätere Bekanntheit soll in diesem Bereich liegen: {activity_field}.
 
-Verwende Namen, Ort und Bereich natürlich, als wären sie Teil einer echten Meldung. Erfinde Zukunftsleistung und Auszeichnungen passend dazu. Vermeide dabei wiedererkennbare Schablonen, besonders wiederholte Berufe, wiederholte Preislisten und zu ähnliche Satzanfänge.
+Strukturelle Variation für diese Nachricht: {structure_hint}
+
+Verwende Namen, Ort und Bereich natürlich, als wären sie Teil einer echten Meldung. Erfinde Zukunftsleistung und Auszeichnungen passend dazu. Vermeide dabei wiedererkennbare Schablonen, besonders wiederholte Berufe, wiederholte Preislisten und zu ähnliche Satzanfänge. Vermeide insbesondere die ständig wiederholte Formulierung „geboren worden“. Nutze unterschiedliche Satzstellungen und natürliche Alternativen wie „kam zur Welt“, „wurde geboren“, „begrüßte ... ein Kind“ oder eine andere journalistisch passende Form.
 
 Gib in der Nachricht die genaue Zeit an! Genauer gesagt, heute {date} um {time}. Es sollte einfach die aktuelle Zeit sein, wenn du die Nachricht schreibst. Nur nach lokaler Zeit.
 
