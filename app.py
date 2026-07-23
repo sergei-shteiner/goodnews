@@ -30,15 +30,12 @@ TEMPLATE = """
             text-align: center;
             width: 60%;
         }
-        h1 { 
-            font-size: 1.5rem; 
-            color: #333; 
-        }
         p { 
             font-size: 1.2rem; 
             color: #555; 
             text-align: left;
             white-space: pre-wrap;
+            margin-top: 0;
         }
         button {
             margin-top: 1rem;
@@ -57,7 +54,6 @@ TEMPLATE = """
 </head>
 <body>
     <div class=\"container\">
-        <h1>Gute Nachricht!</h1>
         <p>{{ news }}</p>
         <form method=\"get\">
             <button type=\"submit\">Neue Nachricht generieren</button>
